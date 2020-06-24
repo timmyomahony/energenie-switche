@@ -83,6 +83,12 @@ def _switch(mode, socket):
 
 
 def status(socket=0):
+    """
+    Warning: this is not guaranteed to be the status of the switch, it's just
+    the last known values of the GPIO pins on the board. For example, you might
+    have turned off the switch manually via its buttons, meaning the GPIO would
+    still report it as "on" even though it's "off".
+    """
     state = "{}{}{}{}".format(
         GPIO.input(PIN_D3),
         GPIO.input(PIN_D2),
